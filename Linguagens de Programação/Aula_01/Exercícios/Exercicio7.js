@@ -3,18 +3,18 @@
 
 function inverter(strign1)
 {
-    let palavra = strign1.split('');
+    let palavra = strign1.split("");
     let invertida = "";
 
-    for(let i = palavra.lenght; i >= 0; i--)
-    {
-        
-        invertida += palavra[i];
+    let cont = 0;
 
+    for(let i = palavra.length-1; i >= 0; i--)
+    {
+        invertida = invertida + palavra[i];
     }
     
     return invertida;
 }
 
-console.log(inverter("Javascript"));
+console.log(inverter("Abner"));
 
