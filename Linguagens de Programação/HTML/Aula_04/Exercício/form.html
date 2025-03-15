@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição para curso</title>
+</head>
+
+<body>
+    <h1>Formulário de Inscrição</h1>
+    <div style="margin-right: 900px;">
+        <form action="https://67cb71f43395520e6af556a4.mockapi.io/inscricao" method="post">
+
+            <fieldset>
+
+                <legend>Inscrição para o Curso</legend>
+
+                <p>
+                    <label for="nomeAluno">Nome do Aluno: </label>
+                    <input type="text" name="nomeAluno" id="nomeAluno" placeholder="Insira o nome do aluno." required>
+                </p>
+
+                <p>
+                    <label for="endereco">Endereco: </label>
+                    <input type="text" name="endereco" id="endereco" placeholder="Insira a rua e o número.">
+                </p>
+
+                <p>
+                    <label for="bairro">Bairro: </label>
+                    <input type="text" name="bairro" id="bairro" placeholder="Insira o bairro.">
+                </p>
+
+                <p>
+                    <label for="cidade">Cidade: </label>
+                    <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade.">
+                </p>
+
+                <p>
+                    <label for="estado">Estado de Residência:</label>
+                    <select name="estado" id="estado">
+                        <option value="0">Selecione...</option>
+                        <option value="sp">São Paulo</option>
+                        <option value="rj">Rio de Janeiro</option>
+                        <option value="mg">Minas Gerais</option>
+                        <option value="rs">Rio Grande do Sul</option>
+                        <option value="pr">Paraná</option>
+                        <option value="mt">Mato Grosso</option>
+                        <option value="ms">Mato Grosso do Sul</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" name="telefone" id="telefone" required>
+                </p>
+
+                <p>
+                    <label for="celular">Celular:</label>
+                    <input type="tel" name="celular" id="celular" required>
+                </p>
+
+                <p>
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="email" required>
+                </p>
+
+                <p>
+                    <label for="etnia">Etnia: </label>
+                    <input type="radio" name="etnia" value="Branco"><label for="brc">Branco</label>
+                    <input type="radio" name="etnia" value="Negro"><label for="prt">Negro</label>
+                    <input type="radio" name="etnia" value="Pardo"><label for="par">Pardo</label>
+                    <input type="radio" name="etnia" value="Asiatico"><label for="asi">Asiático</label>
+                    <input type="radio" name="etnia" value="Outros"><label for="outros">Outra</label>
+                </p>
+
+                <hr />
+
+                <p>
+
+                    <label for="nomePai">Nome do Pai: </label>
+                    <input type="text" name="nomePai" id="nomePai" placeholder="Insira o nome do pai do aluno."
+                        required>
+                </p>
+
+                <p>
+                    <label for="dataNascPai">Data de Nascimento:</label>
+                    <input type="date" name="dataNascPai" id="dataNascPai">
+                </p>
+
+                <p>
+                    <label for="naturalidadePai">Naturalidade do Pai: </label>
+                    <input type="text" name="naturalidadePai" id="naturalidadePai"
+                        placeholder="Insira a naturalidade do pai do aluno.">
+                </p>
+                <p>
+                    <label for="instrucaoPai">Nível de Instrução do Pai: </label>
+                    <select name="instrucaoPai" id="instrucaoPai">
+                        <option value="">Selecione...</option>
+                        <option value="Nao-Instruido">Não-Instruído</option>
+                        <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                        <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                        <option value="Ensino Medio Incompleto">Ensino Médio Incompleto</option>
+                        <option value="Ensino Medio Completo">Ensino Médio Completo</option>
+                        <option value="Graduação Completa">Graduação Completa</option>
+                    </select>
+
+                </p>
+                <p>
+                    <label for="profissaoPai">Profissão do Pai: </label>
+                    <input type="text" name="profissaoPai" id="profissaoPai"
+                        placeholder="Insira a profissão do pai do aluno.">
+                </p>
+
+                <p>
+                    <label for="celularPai">Celular do Pai:</label>
+                    <input type="tel" name="celularPai" id="celularPai" required>
+                </p>
+
+                <p>
+                    <label for="emailPai">E-mail do Pai:</label>
+                    <input type="email" name="emailPai" id="emailPai" required>
+                </p>
+                <p>
+                    <label for="cpfPai">CPF do Pai:</label>
+                    <input type="text" name="cpfPai" id="cpfPai" required>
+                </p>
+
+                <p>
+                    <label for="resFinPai">É responsável financeiro? </label>
+                    <input type="radio" name="resFinPai" value="Sim"><label for="sim">Sim</label>
+                    <input type="radio" name="resFinPai" value="Nao"><label for="nao">Não</label>
+
+                </p>
+
+                <hr />
+
+                <p>
+                    <label for="nomeMae">Nome da Mãe: </label>
+                    <input type="text" name="nomeMae" id="nomeMae" placeholder="Insira o nome da mãe do aluno."
+                        required>
+                </p>
+
+                <p>
+                    <label for="dataNascMae">Data de Nascimento:</label>
+                    <input type="date" name="dataNascMae" id="dataNascMae">
+                </p>
+
+                <p>
+                    <label for="naturalidadeMae">Naturalidade da Mãe: </label>
+                    <input type="text" name="naturalidadeMae" id="naturalidadeMae"
+                        placeholder="Insira a naturalidade da mãe do aluno.">
+                </p>
+                <p>
+                    <label for="instrucaoMae">Nível de Instrução da Mãe: </label>
+                    <select name="instrucaoMae" id="instrucaoMae">
+                        <option value="">Selecione...</option>
+                        <option value="Nao-Instruido">Não-Instruído</option>
+                        <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                        <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                        <option value="Ensino Medio Incompleto">Ensino Médio Incompleto</option>
+                        <option value="Ensino Medio Completo">Ensino Médio Completo</option>
+                        <option value="Graduação Completa">Graduação Completa</option>
+                    </select>
+
+                </p>
+                <p>
+                    <label for="profissaoMae">Profissão da Mãe: </label>
+                    <input type="text" name="profissaoMae" id="profissaoMae"
+                        placeholder="Insira a profissão da mae do aluno.">
+                </p>
+
+                <p>
+                    <label for="celularMae">Celular da Mãe:</label>
+                    <input type="tel" name="celularMae" id="celularMae" required>
+                </p>
+
+                <p>
+                    <label for="emailMae">E-mail da Mãe:</label>
+                    <input type="email" name="emailMae" id="emailMae" required>
+                </p>
+                <p>
+                    <label for="cpfMae">CPF da Mãe:</label>
+                    <input type="text" name="cpfMae" id="cpfMae" required>
+                </p>
+
+                <p>
+                    <label for="resFinMae">É responsável financeiro? </label>
+                    <input type="radio" name="resFinMae" value="Sim"><label for="sim">Sim</label>
+                    <input type="radio" name="resFinMae" value="Nao"><label for="nao">Não</label>
+
+                </p>
+
+                <hr />
+
+                <p>
+                    <label for="nomeCurso">Curso Escolhido: </label>
+                    <select name="nomeCurso" id="nomeCurso" onchange="alterarInput()">
+                        <option value="">Selecione...</option>
+                        <option value="cursoIngles">Curso de Inglês - Kids</option>
+                        <option value="cursoDesenho">Curso de Desenho</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="dataIngresso:">Data de Ingresso</label>
+                    <input type="date" name="dataIngresso" id="dataIngresso">
+                </p>
+                <p>
+                    <label for="valor">Valor: </label>
+                    <input type="text" name="valor" id="valor" value="" disabled>
+                </p>
+
+                <p>
+                    <label for="formaPagamento">Forma de Pagamento: </label>
+                    <select name="formaPagamento" id="formaPagamento" onchange="alterarPagamento()">
+                        <option value="">Selecione...</option>
+                        <option value="credito">Cartão de Crédito</option>
+                        <option value="debito">Cartão de Débito</option>
+                        <option value="dinheiro">Dinheiro Físico</option>
+                        <option value="pix">Pix</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="qtdParcelas">Quantidade de Parcelas</label>
+                    <select name="qtdParcelas" id="qtdParcelas">
+                        <option value="">Selecione...</option>
+                        <option value="1x">1x Parcela</option>
+                        <option id="2x" value="2x" hidden>2x Parcelas (Sem Juros)</option>
+                        <option id="3x" value="3x" hidden>3x Parcelas (Sem Juros)</option>
+                        <option id="4x" value="4x" hidden>4x Parcelas (Com Juros)</option>
+                    </select>
+                </p>
+
+                <p>
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpar</button>
+                </p>
+
+            </fieldset>
+
+        </form>
+    </div>
+
+    <p><a href="index.html">Voltar</a></p>
+</body>
+
+<script>
+    function alterarInput() {
+
+        var valor = document.getElementById('nomeCurso').value;
+
+        if (valor == "cursoDesenho") {
+            document.getElementById('valor').value = "R$ 120,00";
+        }
+
+        else if (valor == "cursoIngles") {
+            document.getElementById('valor').value = "R$ 200,00";
+        }
+
+
+    }
+    function alterarPagamento() {
+        var valor = document.getElementById('formaPagamento').value;
+
+        if (valor == "credito") {
+            document.getElementById('2x').removeAttribute('hidden');
+            document.getElementById('3x').removeAttribute('hidden');
+            document.getElementById('4x').removeAttribute('hidden');
+        }
+    }
+</script>
+
+</html>
