@@ -1,0 +1,16 @@
+.navbar {
+    display: inline;
+    
+}
+
+.navbar ul li{
+    display: inline;
+    
+}
+
+.navbar ul {
+    list-style: none;
+    background-color: black;
+}
+
+
