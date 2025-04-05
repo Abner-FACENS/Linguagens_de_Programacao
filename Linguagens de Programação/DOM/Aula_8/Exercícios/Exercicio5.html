@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <p>
+        <label for="escrever">Escreva uma frase: </label>
+        <input type="text" name="escrever" id="escrever">
+        <button onclick="contar(event)">Enviar</button>
+    </p>
+    <p class = "texto">
+        Esssa frase tem # palavras
+    </p>
+
+</body>
+<script>
+    function contar(event) {
+        event.preventDefault()
+        let texto = document.querySelector('#escrever').value
+        let separado = texto.split(" ")
+        let contagem = separado.length
+
+        document.querySelector('.texto').textContent = `Essa frase tem ${contagem} palavras`
+         document.querySelector('#escrever').value = ''
+    }
+</script>
+</html>

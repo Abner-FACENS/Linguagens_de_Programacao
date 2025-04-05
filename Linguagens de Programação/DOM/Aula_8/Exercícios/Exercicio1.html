@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<body>
+    <p>
+        <button onclick="mudarCor(event)">Mudar Cor</button>
+
+        <div>Cores</div>
+    </p>
+</body>
+<script>
+    function mudarCor(event)
+    {
+        let cores = ['#FFFFF', '#4B0082', "#4682B4",'#20B2AA', '#FFA500' ];
+        let div = document.querySelector('div')
+        div.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+    }
+</script>
+</html>
