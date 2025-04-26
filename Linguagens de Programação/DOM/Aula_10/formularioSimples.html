@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Simples</title>
+</head>
+
+<body>
+    <form>
+
+        <fieldset>
+            <legend>Cadastro de Cliente</legend>
+            <p>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" placeholder="Insira o seu nome." required>
+            </p>
+            <p>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" required>
+            </p>
+            <p>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" name="telefone" id="telefone" required>
+            </p>
+            <p>
+                <button onclick="gravar(event)">Gravar</button>
+            </p>
+        </fieldset>
+
+    </form>
+</body>
+
+<script>
+
+    let cliente = {
+        nome: 'Abner',
+        email: 'abner.senai2024@gmail.com',
+        telefone: '(15) 99999-9999'
+    }   
+
+    function gravar(event) {
+        event.preventDefault()
+
+        let nome = document.getElementById('nome').value
+        let email = document.getElementById('email').value
+        let telefone = document.getElementById('telefone').value
+
+        let cliente = {
+            nome: nome,
+            email: email,
+            telefone: telefone
+        }
+        fetch('https://67cb71f43395520e6af556a4.mockapi.io/cliente', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cliente),
+        })
+            .then(resposta => resposta.json())
+            .then(dados => {
+                console.log(dados)
+                document.getElementById('nome').value = ''
+                document.getElementById('email').value = ''
+                document.getElementById('telefone').value = ''
+                window.alert('Cliente cadastrado com sucesso!')
+            })
+
+
+    }
+</script>
+
+</html>

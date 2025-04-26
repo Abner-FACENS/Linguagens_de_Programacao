@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - PromiseAll </title>
+</head>
+
+<body>
+    <select name="person1" id="person1">
+
+
+
+    </select>
+    <hr>
+    <p>
+        <label for="name">Nome: </label>
+        <input type="text" name="name" id="name">
+        <button onclick="consultar(event)">Consultar</button>
+    </p>
+
+    <p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Avatar</th>
+                <th>Created at</th>
+            </tr>
+        </thead>
+        <tbody id="tabela">
+
+        </tbody>
+    </table>
+    </p>
+</body>
+
+<script>
+    let person1 = []
+    let person2 = []
+
+    async function todosDados() {   
+        const link1 = 'https://67cb71f43395520e6af556a4.mockapi.io/person1'
+        const link2 = 'https://67cb71f43395520e6af556a4.mockapi.io/person2'
+
+        let resposta = await Promise.all([
+            fetch(link1),
+            fetch(link2)
+        ])
+
+        person1 = await resposta[0].json()
+        person2 = await resposta[1].json()
+
+        console.log(person1)
+        console.log(person2)
+
+        let select = document.getElementById('person1')
+
+        person1.forEach(element => {
+            let option = document.createElement('option')
+            option.value = element.id
+            option.innerHTML = element.name
+            select.appendChild(option)
+        });
+        atualizarTabela()
+    }
+    todosDados();
+
+    function atualizarTabela()
+    {
+        let tabela = document.getElementById('tabela')
+        tabela.innerHTML = ''
+        person1.forEach(element => {
+            let tr = document.createElement('tr')
+            let tdName = document.createElement('td')
+            let tdAvatar = document.createElement('td')
+            let tdCreatedAt = document.createElement('td')
+            tdName.innerHTML = element.name
+            tdAvatar.innerHTML = element.avatar
+            tdCreatedAt.innerHTML = element.createdAt
+            tr.appendChild(tdName)
+            tr.appendChild(tdAvatar)
+            tr.appendChild(tdCreatedAt)
+            tabela.appendChild(tr)
+        })
+    }
+
+    function consultar (event) {
+        event.preventDefault()
+        let consultar = document.getElementById('name').value
+        let tabela = document.getElementById('tabela')
+        tabela.innerHTML = ''
+
+        let filtrado = person1.filter(element =>
+            {
+                return element.name.toLowerCase().includes(name.toLowerCase())
+            }
+        )
+        
+        filtrado.forEach(element => {
+            let tr = document.createElement('tr')
+            let tdName = document.createElement('td')
+            let tdAvatar = document.createElement('td')
+            let tdCreatedAt = document.createElement('td')
+            tdName.innerHTML = element.name
+            tdAvatar.innerHTML = element.avatar
+            tdCreatedAt.innerHTML = element.createdAt
+            tr.appendChild(tdName)
+            tr.appendChild(tdAvatar)
+            tr.appendChild(tdCreatedAt)
+            tabela.appendChild(tr)
+        })
+    }
+
+
+</script>
+
+</html>
