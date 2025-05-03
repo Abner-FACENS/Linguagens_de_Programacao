@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinto Hub</title>
+</head>
+
+<body>
+    <h1>Formulário de Reserva de Carros - Kinto</h1>
+    <form id="formulario">
+        <fieldset>
+            <legend>Dados do Cliente</legend>
+            <p>
+                <label for="name">Nome: </label>
+                <input type="text" name="name" id="name" required>
+            </p>
+            <p>
+                <label for="phone">Telefone: </label>
+                <input type="tel" name="phone" id="phone">
+            </p>
+            <p>
+                <label for="email">E-mail: </label>
+                <input type="email" name="email" id="email" required>
+            </p>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados da Reserva</legend>
+            <p>
+                <label for="data">Data da Reserva: </label>
+                <input type="date" name="data" id="data" onchange="preencher(event)">
+            </p>
+            <p>
+                <label for="car">Carro: </label>
+                <select name="car" id="car" onchange="mudar(event)">
+                    <option value="">Selecione...</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="model"> Modelo: </label>
+                <input type="text" name="model" id="model" value="" disabled>
+            </p>
+
+            <p>
+                <label for="preco_diaria">Preço da Diária: </label>
+                <input type="text" name="preco_diaria" id="preco_diaria" value="" disabled>
+            </p>
+
+            <p>
+                <button type="submit" onclick="gravar(event)">Enviar</button>
+            </p>
+        </fieldset>
+
+    </form>
+</body>
+
+<script src="scripts.js"></script>
+
+</html>
