@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa - Linguagens de Programação</title>
+</head>
+<style>
+    button {
+        background: linear-gradient(to right, rgb(228, 141, 141), rgb(228, 168, 141), 
+        rgb(228, 215, 141), rgb(176, 228, 141), rgb(141, 186, 228), rgb(141, 147, 228), 
+        rgb(179, 141, 228));
+        border-radius: 3px;
+        border-color: black;
+        margin-left: 250px;
+    }
+
+    h1 {
+        color: black
+    }
+
+    #formulario {
+        background-color: white;
+        border: 1px darkgreen solid;
+        padding: 5px;
+        
+    }
+
+    fieldset {
+        width: 500px;
+        background-color: white;
+    }
+
+    body {
+        justify-items: center;
+        background: linear-gradient(to right, rgb(228, 141, 141), rgb(228, 168, 141), 
+        rgb(228, 215, 141), rgb(176, 228, 141), rgb(141, 186, 228), rgb(141, 147, 228), 
+        rgb(179, 141, 228))
+    }
+
+    #cargos {
+        background-color: rgb(238, 243, 246);
+        color: rgb(104, 104, 148);
+    }
+
+    #pessoais {
+        background-color: rgb(209, 249, 209);
+        color: rgb(104, 148, 108);
+    }
+
+    #convenios {
+        background-color: rgb(249, 209, 209);
+        color: rgb(162, 99, 99);
+    }
+
+    #setores {
+        background-color: rgb(232, 250, 178);
+        color: rgb(164, 158, 104);
+    }
+</style>
+
+<body>
+    <h1>Cadastro de Funcionários</h1>
+    <div>
+        <form id="formulario">
+            <fieldset id="pessoais">
+                <legend id="legendPessoais">Dados Pessoais</legend>
+                <p>
+                    <label for="name">Nome: </label>
+                    <input type="text" name="name" id="name" required>
+                </p>
+                <p>
+                    <label for="phone">Telefone: </label>
+                    <input type="tel" name="phone" id="phone">
+                </p>
+                <p>
+                    <label for="email">E-mail: </label>
+                    <input type="email" name="email" id="email" required>
+                </p>
+                <p>
+                    <label for="rg">RG: </label>
+                    <input type="text" name="rg" id="rg" required>
+                </p>
+                <p>
+                    <label for="cpf">CPF: </label>
+                    <input type="number" name="cpf" id="cpf" required>
+                </p>
+
+            </fieldset>
+
+            <fieldset id="cargos">
+                <legend id="legendCargos">Cargo</legend>
+                <p>
+                    <label for="cargo">Nome: </label>
+                    <select name="cargo" id="cargo" onchange="mudar(event)">
+                        <option value="">Selecione...</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="salario">Salário: </label>
+                    <input type="text" name="salario" id="salario" disabled>
+                </p>
+
+            </fieldset>
+
+            <fieldset id="setores">
+                <legend id="legendSetor">Setor</legend>
+                <p>
+                    <label for="setor">Nome: </label>
+                    <select name="setor" id="setor" onchange="mudar(event)">
+                        <option value="">Selecione...</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="sigla">Sigla: </label>
+                    <input type="text" name="sigla" id="sigla" disabled>
+                </p>
+
+            </fieldset>
+
+            <fieldset id="convenios">
+                <legend id="legendConvenio">Convênio</legend>
+                <p>
+                    <label for="convenio">Nome: </label>
+                    <select name="convenio" id="convenio" onchange="mudar(event)">
+                        <option value="">Selecione...</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="valorT">Valor para o Titular: </label>
+                    <input type="text" name="valorT" id="valorT" disabled>
+                </p>
+
+                <p>
+                    <label for="valorD">Valor para o Dependente: </label>
+                    <input type="text" name="valorD" id="valorD" disabled>
+                </p>
+
+            </fieldset>
+            <p>
+                <button type="submit" onclick="gravar(event)">Enviar</button>
+            </p>
+
+
+        </form>
+    </div>
+</body>
+
+<script>
+    let setores = [
+        { id: 1, nome: "Tecnologia da Informação", sigla: "TI" },
+        { id: 2, nome: "Recursos Humanos", sigla: "RH" },
+        { id: 3, nome: "Financeiro", sigla: "FI" },
+        { id: 4, nome: "Marketing e Vendas", sigla: "MK" },
+        { id: 5, nome: "Produção e Operações", sigla: "PO" },
+    ];
+
+    let cargos = [
+        { id: 1, nome: "Analista de Sistemas", salário: "8500" },
+        { id: 2, nome: "Assistente Administrativo", salário: "2500" },
+        { id: 3, nome: "Secretário", salário: "4300" },
+        { id: 4, nome: "Gerente de Vendas", salário: "6500" },
+        { id: 5, nome: "Analista de Marketing", salário: "4500" },
+    ];
+
+    let convenios = [
+        {
+            id: 1,
+            nome: "UNIMED",
+            valor: { titular: 1500, dependente: 750 },
+        },
+        {
+            id: 2,
+            nome: "Intermédica",
+            valor: { titular: 1400, dependente: 850 },
+        },
+    ];
+
+    function preencher() {
+
+        let cargo = document.getElementById('cargo')
+        let setor = document.getElementById('setor')
+        let convenio = document.getElementById('convenio')
+
+        cargo.innerHTML = `<option value="">Selecione...</option>`;
+        setor.innerHTML = `<option value="">Selecione...</option>`;
+        convenio.innerHTML = `<option value="">Selecione...</option>`;
+
+
+        setores.forEach(element => {
+            let option = document.createElement('option')
+            option.value = element.nome;
+            option.innerHTML = element.nome;
+
+            setor.appendChild(option)
+        });
+
+        cargos.forEach(element => {
+            let option = document.createElement('option')
+            option.value = element.nome;
+            option.innerHTML = element.nome;
+
+            cargo.appendChild(option)
+        });
+
+        convenios.forEach(element => {
+            let option = document.createElement('option')
+            option.value = element.nome;
+            option.innerHTML = element.nome;
+
+            convenio.appendChild(option)
+        });
+
+    }
+
+    preencher();
+
+    function mudar(event) {
+
+        let evento = event.target;
+
+        console.log(evento.id)
+
+        switch (evento.id) {
+            case "cargo":
+                let salario = document.getElementById('salario').value
+
+                cargos.forEach(element => {
+                    if (evento.value == element.nome) {
+
+                        document.getElementById('salario').value = `R$ ${element.salário},00`
+                    }
+                })
+
+
+                break;
+            case "convenio":
+                let convenio = evento.value;
+
+                convenios.forEach(element => {
+                    if (convenio == element.nome) {
+
+                        document.getElementById('valorT').value = `R$ ${element.valor.titular},00`
+                        document.getElementById('valorD').value = `R$ ${element.valor.dependente},00`
+                    }
+                })
+
+                break;
+            case "setor":
+                let setor = evento.value;
+
+                setores.forEach(element => {
+                    if (setor == element.nome) {
+
+                        document.getElementById('sigla').value = element.sigla
+                    }
+                })
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    function gravar(event) {
+        event.preventDefault();
+
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let phone = document.getElementById('phone').value
+        let rg = document.getElementById('rg').value
+        let cpf = document.getElementById('cpf').value
+        let cargo = document.getElementById('cargo').value
+        let salario = document.getElementById('salario').value
+        let setor = document.getElementById('setor').value
+        let sigla = document.getElementById('sigla').value
+        let convenio = document.getElementById('convenio').value
+        let valorT = document.getElementById('valorT').value
+        let valorD = document.getElementById('valorD').value
+
+
+
+        let funcionario = {
+            name: name,
+            phone: phone,
+            email: email,
+            rg: rg,
+            cpf: cpf,
+            cargo: cargo,
+            salario: salario,
+            setor: setor,
+            sigla: sigla,
+            convenio: convenio,
+            valorT: valorT,
+            valorD: valorD
+        }
+        if (funcionario.nome != '' && funcionario.email != '' && funcionario.cpf != '') {
+            fetch('https://67cb71f43395520e6af556a4.mockapi.io/funcionario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(funcionario),
+            })
+                .then(resposta => resposta.json())
+                .then(dados => {
+                    console.log(dados)
+                    document.getElementById('name').value = ''
+                    document.getElementById('email').value = ''
+                    document.getElementById('phone').value = ''
+                    document.getElementById('rg').value = ''
+                    document.getElementById('cargo').value = ''
+                    document.getElementById('salario').value = ''
+                    document.getElementById('setor').value = ''
+                    document.getElementById('sigla').value = ''
+                    document.getElementById('convenio').value = ''
+                    document.getElementById('valorT').value = ''
+                    document.getElementById('valorD').value = ''
+                    window.alert('Cliente cadastrado com sucesso!')
+                })
+        }
+
+        else {
+            window.alert('Confira se você esqueceu de preencher algum destes campos: Nome, E-mail ou CPF! O preenchimento deles é obrigatório!')
+        }
+    }
+
+
+
+</script>
+
+</html>
